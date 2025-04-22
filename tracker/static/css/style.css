@@ -266,4 +266,62 @@ body {
     margin-bottom: 1rem;
     font-family: 'VT323', monospace;
  }
+
+/* 🌿 Delete Confirmation Page Styles */
+.delete-page {
+    background-color: #f8f9f4;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    color: #364732;
+    padding: 2rem;
+}
+
+.delete-page h2 {
+    color: #4a6f42;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.delete-page p {
+    font-size: 18px;
+    margin-bottom: 1.5rem;
+}
+
+.delete-page form {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.delete-page button {
+    background-color: #e8a6a6;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.delete-page button:hover {
+    background-color: #d98b8b;
+}
+
+.delete-page a {
+    text-decoration: none;
+    color: #4a6f42;
+    font-weight: bold;
+    font-size: 18px;
+    border: 1px solid #4a6f42;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.delete-page a:hover {
+    background-color: #d7ebd4;
+}
+
  
