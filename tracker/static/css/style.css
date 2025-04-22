@@ -273,7 +273,19 @@ body {
     font-family: 'VT323', monospace;
     font-size: 20px;
     color: #364732;
-    padding: 2rem;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-page > div {
+    background-color: white;
+    border: 2px solid #cde0c1;
+    border-radius: 10px;
+    padding: 2rem 3rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    text-align: center;
 }
 
 .delete-page h2 {
@@ -289,6 +301,7 @@ body {
 
 .delete-page form {
     display: flex;
+    justify-content: center;
     gap: 1rem;
     align-items: center;
 }
