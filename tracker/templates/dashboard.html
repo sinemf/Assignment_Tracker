@@ -11,7 +11,6 @@
 <body>
    <header></header>
 
-
    <h1>📚 Assignment Tracker</h1>
   
    <p class="bookmark-tip">
@@ -24,12 +23,10 @@
        <a href="?month={{ current_month|add:'1' }}&year={{ current_year }}" class="month-button">Next →</a>
    </div>
 
-
    <div style="margin-bottom: 1rem;">
-       <button onclick="window.print()" class="pdf-button">📥 Save as PDF</button>
+       <button onclick="window.print()" class="pdf-button">📅 Save as PDF</button>
        <a href="{% url 'export_ics' %}" class="ics-button">🗓️ Export to Calendar (.ics)</a>
    </div>
-
 
    <table class="calendar">
        <tr>
@@ -45,6 +42,7 @@
                    {% for assignment in day.assignments %}
                        <div class="assignment {% if not assignment.completed and assignment.due_date <= today %}past-due{% endif %}">
                            <a href="{% url 'edit' assignment.id %}">{{ assignment.title }}</a>
+                           <a href="{% url 'delete' assignment.id %}" class="delete-button">🗑️</a>
                        </div>
                    {% endfor %}
                {% endif %}
@@ -53,7 +51,6 @@
        </tr>
        {% endfor %}
    </table>
-
 
    <div class="progress-container">
        <div class="progress-row">
@@ -82,19 +79,16 @@
        </div>
    </div>
 
-
    <script>
        document.querySelectorAll('.progress-fill').forEach(bar => {
            const percent = bar.getAttribute('data-progress');
            bar.style.width = percent + '%';
        });
 
-
-       // ✅ Timezone detection
+       //Timezone detection
        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
        document.cookie = `user_timezone=${tz}; path=/`;
    </script>
-
 
    <div class="footer">
        🍵 protect your peace.
