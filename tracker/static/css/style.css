@@ -132,7 +132,19 @@ body {
  .assignment a:hover {
     text-decoration: underline;
  }
- 
+
+.delete-button {
+    font-size: 14px; /* Smaller cross */
+    margin-left: 6px;
+    color: #b33939;
+    text-decoration: none;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.delete-button:hover {
+    color: #ff5e57;
+}
  
  .progress-container {
     margin-top: 3rem;
