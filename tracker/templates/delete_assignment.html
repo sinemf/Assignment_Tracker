@@ -1,17 +1,22 @@
 <!-- delete.html -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Delete Assignment</title>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-  <h2>🗑️ Delete Assignment</h2>
-  <p>Are you sure you want to delete "{{ assignment.title }}"?</p>
-  <form method="post">
-    {% csrf_token %}
-    <button type="submit">Yes, delete</button>
-    <a href="{% url 'dashboard' %}">Cancel</a>
-  </form>
+  <div class="delete-page">
+    <h2>🗑️ Delete Assignment</h2>
+    <p>Are you sure you want to delete "{{ assignment.title }}"?</p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit">Yes, delete</button>
+      <a href="{% url 'dashboard' %}">Cancel</a>
+    </form>
+  </div>
 </body>
 </html>
