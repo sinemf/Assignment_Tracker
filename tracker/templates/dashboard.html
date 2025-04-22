@@ -42,7 +42,7 @@
                    {% for assignment in day.assignments %}
                        <div class="assignment {% if not assignment.completed and assignment.due_date <= today %}past-due{% endif %}">
                            <a href="{% url 'edit' assignment.id %}">{{ assignment.title }}</a>
-                           <a href="{% url 'delete' assignment.id %}" class="delete-button">🗑️</a>
+                           <a href="{% url 'delete' assignment.id %}" class="delete-button">❌</a>
                        </div>
                    {% endfor %}
                {% endif %}
@@ -85,7 +85,7 @@
            bar.style.width = percent + '%';
        });
 
-       //Timezone detection
+       // Timezone detection
        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
        document.cookie = `user_timezone=${tz}; path=/`;
    </script>
