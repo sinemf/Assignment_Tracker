@@ -1,4 +1,4 @@
-<!-- delete.html -->
+<!-- delete_assignment.html -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -10,13 +10,15 @@
 </head>
 <body>
   <div class="delete-page">
-    <h2>🗑️ Delete Assignment</h2>
-    <p>Are you sure you want to delete "{{ assignment.title }}"?</p>
-    <form method="post">
-      {% csrf_token %}
-      <button type="submit">Yes, delete</button>
-      <a href="{% url 'dashboard' %}">Cancel</a>
-    </form>
+    <div> 
+      <h2>🗑️ Delete Assignment</h2>
+      <p>Are you sure you want to delete "{{ assignment.title }}"?</p>
+      <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, delete</button>
+        <a href="{% url 'dashboard' %}">Cancel</a>
+      </form>
+    </div>
   </div>
 </body>
 </html>
