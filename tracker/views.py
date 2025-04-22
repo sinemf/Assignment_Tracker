@@ -7,7 +7,7 @@ from django.utils.timezone import now as django_now
 from zoneinfo import ZoneInfo
 from .models import Assignment
 from .forms import AssignmentForm
-
+from django.shortcuts import get_object_or_404
 
 
 
@@ -163,3 +163,10 @@ def export_calendar(request):
    response = HttpResponse(cal.to_ical(), content_type='text/calendar')
    response['Content-Disposition'] = 'attachment; filename=assignments.ics'
    return response
+   
+def delete_assignment(request, id):
+    assignment = get_object_or_404(Assignment, id=id)
+    if request.method == "POST":
+        assignment.delete()
+        return redirect("dashboard")
+    return render(request, "delete_assignment.html", {"assignment": assignment})
