@@ -8,4 +8,5 @@ urlpatterns = [
    path('add/<str:due_date>/', views.add_assignment_with_date, name='add_with_date'),
    path('edit/<int:id>/', views.edit_assignment, name='edit'),
    path('export/', views.export_calendar, name='export_ics'),
+   path("delete/<int:id>/", views.delete_assignment, name="delete"),
 ]
