@@ -1,0 +1,269 @@
+body {
+    background-color: #f8f9f4;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    color: #364732;
+    margin: 0;
+    padding: 2rem;
+ }
+ 
+ 
+ header {
+    background-image: url("/static/img/pixel_banner.gif");
+    background-size: cover;
+    background-position: center 35%;
+    height: 150px;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+ }
+ 
+ 
+ h1 {
+    color: #4a6f42;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+ }
+ 
+ 
+ /* 🌿 New: Month Navigation */
+ .month-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem 0;
+ }
+ 
+ 
+ .month-title {
+    font-size: 3rem;
+    color: #4a6f42;
+    margin: 0 1rem;
+    text-align: center;
+ }
+ 
+ 
+ .month-button {
+    background-color: #cde0c1;
+    color: #364732;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s;
+ }
+ 
+ 
+ .month-button:hover {
+    background-color: #b5cdb0;
+ }
+ 
+ 
+ table.calendar {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    table-layout: fixed;
+ }
+ 
+ 
+ table.calendar th, table.calendar td {
+    border: 1px solid #cde0c1;
+    padding: 1rem;
+    vertical-align: top;
+    height: 120px;
+    word-wrap: break-word;
+ }
+ 
+ 
+ table.calendar th {
+    background-color: #eaf5e4;
+    text-align: center;
+    color: #4a6f42;
+    font-size: 22px;
+ }
+ 
+ 
+ table.calendar td {
+    background-color: #ffffff;
+    border-radius: 4px;
+    position: relative;
+ }
+ 
+ 
+ .add-button {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    font-size: 16px;
+    color: #4a6f42;
+    text-decoration: none;
+    background-color: #d7ebd4;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+ }
+ 
+ 
+ .assignment {
+    background-color: #a8d5ba;
+    border-radius: 6px;
+    padding: 0.3rem 0.5rem;
+    margin: 0.3rem 0;
+    font-size: 16px;
+    overflow-wrap: break-word;
+ }
+ 
+ 
+ .assignment.past-due {
+    background-color: #e8a6a6;
+ }
+ 
+ 
+ .assignment a {
+    color: inherit;
+    text-decoration: none;
+ }
+ 
+ 
+ .assignment a:hover {
+    text-decoration: underline;
+ }
+ 
+ 
+ .progress-container {
+    margin-top: 3rem;
+    width: 100%;
+    max-width: 600px;
+ }
+ 
+ 
+ .progress-row {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0;
+ }
+ 
+ 
+ .progress-label-text {
+    width: 80px;
+    text-align: right;
+    margin-right: 10px;
+    font-size: 18px;
+    color: #7c9c7a;
+ }
+ 
+ 
+ .progress-bar {
+    background-color: #dfeadf;
+    border: 1px solid #cde0c1;
+    border-radius: 16px;
+    height: 20px;
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+ }
+ 
+ 
+ .progress-fill {
+    background-color: #b5dbb6;
+    height: 100%;
+    border-radius: 16px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 0.4s ease-in-out;
+    z-index: 1;
+ }
+ 
+ 
+ .progress-bar::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    font-weight: bold;
+    color: #364732;
+    z-index: 2;
+    pointer-events: none;
+ }
+ 
+ 
+ .footer {
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    text-align: center;
+    color: #a1bda5;
+ }
+ 
+ 
+ .pdf-button {
+    background-color: #cde0c1;
+    color: #364732;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 18px;
+    font-family: 'VT323', monospace;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+ }
+ 
+ 
+ .pdf-button:hover {
+    background-color: #b5cdb0;
+ }
+ 
+ 
+ @media print {
+    .pdf-button, .add-button, .month-button {
+        display: none !important;
+    }
+ 
+ 
+    body {
+        background: white;
+        color: black;
+    }
+ 
+ 
+    .calendar td {
+        page-break-inside: avoid;
+    }
+ }
+ 
+ 
+ .ics-button {
+    background-color: #dfeadf;
+    color: #364732;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 1rem;
+    transition: background-color 0.2s;
+ }
+ 
+ 
+ .ics-button:hover {
+    background-color: #cfe2ce;
+ }
+ 
+ 
+ .bookmark-tip {
+    text-align: center;
+    font-size: 18px;
+    color: #6f8c6a;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+    font-family: 'VT323', monospace;
+ }
+ 

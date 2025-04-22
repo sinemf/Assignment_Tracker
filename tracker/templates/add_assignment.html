@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Add Assignment</title>
+   <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   <style>
+       body {
+           background-color: #f8f9f4;
+           font-family: 'VT323', monospace;
+           color: #364732;
+           font-size: 20px;
+           padding: 2rem;
+       }
+
+
+       .form-container {
+           max-width: 600px;
+           margin: 3rem auto;
+           padding: 2rem;
+           background-color: #ffffff;
+           border: 2px solid #cde0c1;
+           border-radius: 16px;
+           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+       }
+
+
+       h1 {
+           font-size: 2.5rem;
+           margin-bottom: 1.5rem;
+           text-align: center;
+           color: #4a6f42;
+       }
+
+
+       form p {
+           margin-bottom: 1rem;
+       }
+
+
+       label {
+           font-weight: bold;
+           display: block;
+           margin-bottom: 0.4rem;
+       }
+
+
+       input, textarea, select {
+           width: 100%;
+           padding: 0.4rem;
+           font-family: 'VT323', monospace;
+           font-size: 18px;
+           border: 1px solid #cde0c1;
+           border-radius: 6px;
+           background-color: #f5f8f3;
+       }
+
+
+       button {
+           display: block;
+           width: 100%;
+           margin-top: 1.5rem;
+           padding: 0.6rem;
+           background-color: #b5dbb6;
+           border: none;
+           border-radius: 8px;
+           font-size: 20px;
+           font-weight: bold;
+           color: #364732;
+           cursor: pointer;
+           transition: background-color 0.2s;
+       }
+
+
+       button:hover {
+           background-color: #a2cba6;
+       }
+
+
+       .back-link {
+           display: block;
+           margin-top: 2rem;
+           text-align: center;
+           text-decoration: none;
+           color: #4a6f42;
+           font-size: 18px;
+       }
+
+
+       .back-link:hover {
+           text-decoration: underline;
+       }
+   </style>
+</head>
+<body>
+   <div class="form-container">
+       <h1>📘 Add Assignment</h1>
+       <form method="post">
+           {% csrf_token %}
+           {{ form.as_p }}
+           <button type="submit">Save Assignment</button>
+       </form>
+       <a href="{% url 'dashboard' %}" class="back-link">← Back to Dashboard</a>
+   </div>
+</body>
+</html>

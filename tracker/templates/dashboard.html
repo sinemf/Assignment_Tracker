@@ -1,0 +1,103 @@
+{% load static %}
+{% load month_filters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>📚 Assignment Tracker</title>
+   <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+   <header></header>
+
+
+   <h1>📚 Assignment Tracker</h1>
+  
+   <p class="bookmark-tip">
+       📌 Tip: Press <strong>Ctrl+D</strong> (or <strong>Cmd+D</strong> on Mac) to bookmark this page!
+   </p>
+  
+   <div class="month-nav">
+       <a href="?month={{ current_month|add:'-1' }}&year={{ current_year }}" class="month-button">← Previous</a>
+       <h2 class="month-title">{{ current_month|get_month_name }} {{ current_year }}</h2>
+       <a href="?month={{ current_month|add:'1' }}&year={{ current_year }}" class="month-button">Next →</a>
+   </div>
+
+
+   <div style="margin-bottom: 1rem;">
+       <button onclick="window.print()" class="pdf-button">📥 Save as PDF</button>
+       <a href="{% url 'export_ics' %}" class="ics-button">🗓️ Export to Calendar (.ics)</a>
+   </div>
+
+
+   <table class="calendar">
+       <tr>
+           <th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th>
+       </tr>
+       {% for week in calendar_weeks %}
+       <tr>
+           {% for day in week %}
+           <td>
+               {% if day %}
+                   <strong>{{ day.day.day }}</strong>
+                   <a href="{% url 'add_with_date' day.day %}" class="add-button">+</a>
+                   {% for assignment in day.assignments %}
+                       <div class="assignment {% if not assignment.completed and assignment.due_date <= today %}past-due{% endif %}">
+                           <a href="{% url 'edit' assignment.id %}">{{ assignment.title }}</a>
+                       </div>
+                   {% endfor %}
+               {% endif %}
+           </td>
+           {% endfor %}
+       </tr>
+       {% endfor %}
+   </table>
+
+
+   <div class="progress-container">
+       <div class="progress-row">
+           <div class="progress-label-text">Month:</div>
+           <div class="progress-bar">
+               <div class="progress-fill" data-progress="{{ month_progress|floatformat:0 }}">
+                   {{ month_progress|floatformat:0 }}% Complete
+               </div>
+           </div>
+       </div>
+       <div class="progress-row">
+           <div class="progress-label-text">Week:</div>
+           <div class="progress-bar">
+               <div class="progress-fill" data-progress="{{ week_progress|floatformat:0 }}">
+                   {{ week_progress|floatformat:0 }}% Complete
+               </div>
+           </div>
+       </div>
+       <div class="progress-row">
+           <div class="progress-label-text">Day:</div>
+           <div class="progress-bar">
+               <div class="progress-fill" data-progress="{{ day_progress|floatformat:0 }}">
+                   {{ day_progress|floatformat:0 }}% Complete
+               </div>
+           </div>
+       </div>
+   </div>
+
+
+   <script>
+       document.querySelectorAll('.progress-fill').forEach(bar => {
+           const percent = bar.getAttribute('data-progress');
+           bar.style.width = percent + '%';
+       });
+
+
+       // ✅ Timezone detection
+       const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+       document.cookie = `user_timezone=${tz}; path=/`;
+   </script>
+
+
+   <div class="footer">
+       🍵 protect your peace.
+   </div>
+</body>
+</html>
