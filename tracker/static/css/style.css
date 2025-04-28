@@ -92,6 +92,7 @@ body {
     position: absolute;
     top: 6px;
     right: 6px;
+    font-family: 'VT323', monospace;
     font-size: 16px;
     color: #4a6f42;
     text-decoration: none;
